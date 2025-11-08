@@ -16,12 +16,36 @@
 <!-- TikTok Pixel Code End -->
 
 <style>
-  body {font-family: Inter, system-ui, Arial; display:flex; align-items:center; justify-content:center; height:100vh; margin:0; background:#0f172a; color:#fff}
-  .card {max-width:720px; padding:28px; border-radius:12px; background:linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)); text-align:center}
-  h1{font-size:24px; margin:0 0 10px}
-  p{margin:6px 0 0; line-height:1.45}
-  a.cta{display:inline-block; margin-top:18px; padding:14px 22px; border-radius:10px; background:#06b6d4; color:#052023; text-decoration:none; font-weight:700}
-  p.small{font-size:14px; opacity:.8}
+  body {
+    font-family: Inter, system-ui, Arial;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background: #0f172a;
+    color: #fff;
+  }
+  .card {
+    max-width: 720px;
+    padding: 28px;
+    border-radius: 12px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+    text-align: center;
+  }
+  h1 { font-size: 24px; margin: 0 0 10px }
+  p { margin: 6px 0 0; line-height: 1.45 }
+  a.cta {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 14px 22px;
+    border-radius: 10px;
+    background: #06b6d4;
+    color: #052023;
+    text-decoration: none;
+    font-weight: 700;
+  }
+  p.small { font-size: 14px; opacity: .8 }
 </style>
 </head>
 <body>
@@ -43,19 +67,20 @@
     el.textContent = countdown;
     if (countdown <= 0) {
       clearInterval(timer);
-      try{ ttq.track('AutoRedirect', { event_id: 'auto_tg_redirect' }); }catch(e){}
+      try {
+        ttq.track('SubmitForm', { event_id: 'auto_redirect' });
+      } catch(e){}
       window.location.href = redirectUrl;
     }
   }, 1000);
 
   document.getElementById('tgLink').addEventListener('click', () => {
-    try{
-      ttq.track('ClickButton', {
-        content_type: 'telegram',
+    try {
+      ttq.track('SubmitForm', {
         event_id: 'tg_click',
-        description: 'Outbound to Telegram'
+        description: 'Telegram Join via SubmitForm'
       });
-    }catch(e){}
+    } catch(e){}
   });
 </script>
 </body>
